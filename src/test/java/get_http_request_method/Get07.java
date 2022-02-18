@@ -7,6 +7,8 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+
 public class Get07 extends DummyApiBaseUrl {
     /*
         Given
@@ -32,8 +34,9 @@ public class Get07 extends DummyApiBaseUrl {
 
         //3. Send the Get request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}/{third}/{fourth}");
-        response.prettyPrint();
+       response.prettyPrint();
         //4. do the validation
+        //way 1
         response.then().statusCode(200).contentType(ContentType.JSON).
                 body("data.employee_name", equalTo("Herrod Chandler")).
                 body("data.employee_salary", equalTo(137500)).
@@ -41,14 +44,9 @@ public class Get07 extends DummyApiBaseUrl {
 
         //Way 2
         JsonPath json = response.jsonPath();
-        System.out.println(json.getString("data.employee_name"));
-        System.out.println(json.getString("data.employee_salary"));
         System.out.println();
-        String salary = json.getString("data.employee_name");
-        int sal = json.getInt("data.employee_salary");
-
-        System.out.println("str:" + salary);
-        System.out.println("int:" + sal);
+        assertEquals("Herrod Chandler",json.getString("data.employee_name"));
+        assertEquals(137500, json.getInt("data.employee_salary"));
 
     }
-}
+ }

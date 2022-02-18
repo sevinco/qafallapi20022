@@ -47,7 +47,7 @@ public class Get10 extends JSonPlaceHolderBaseUrl {
                 body("id", equalTo(7)).
                 body("title", equalTo("illo expedita consequatur quia in")).
                 body("completed", equalTo(false));
-        //2. validation
+        //2. way of  validation
         Map<String, Object> actualData = response.as(HashMap.class);
         assertEquals(expectedData.get("userId"), actualData.get("userId"));
         assertEquals(expectedData.get("id"), actualData.get("id"));
@@ -57,6 +57,7 @@ public class Get10 extends JSonPlaceHolderBaseUrl {
         JsonPath json = response.jsonPath();
         assertEquals(1,json.getInt("userId") );
         assertEquals(7,json.getInt("id") );
+
         assertEquals("illo expedita consequatur quia in",json.getString("title") );
         assertEquals(false,json.getBoolean("completed") );
     }
