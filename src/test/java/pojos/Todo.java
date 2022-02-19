@@ -25,6 +25,11 @@ public class Todo {
         this.title = title;
         this.completed = completed;
     }
+    public Todo(int userId, String title, boolean completed) {
+        this.userId = userId;
+        this.title = title;
+        this.completed = completed;
+    }
     public int getUserId() {
         return userId;
     }
@@ -49,14 +54,12 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
     public String toString() {
         return "Todo{" +
-                "userId=" + userId +
-                ", id=" + id +
+                "userId:" + userId +
+                ", id:" + id +
                 ", title='" + title + '\'' +
                 ", completed=" + completed +
                 '}';
     }
-
 }
