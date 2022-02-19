@@ -1,6 +1,7 @@
 package get_http_request_method;
 
-import base_urls.JSonPlaceHolderBaseUrl;
+
+import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -10,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
-public class Get10 extends JSonPlaceHolderBaseUrl {
+public class Get10 extends JsonPlaceHolderBaseUrl {
     /*
         Given
             https://jsonplaceholder.typicode.com/todos/7

@@ -1,13 +1,14 @@
 package get_http_request_method;
 
-import base_urls.JSonPlaceHolderBaseUrl;
+import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import pojos.Todo;
 import java.util.HashMap;
 import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
-public class Get08 extends JSonPlaceHolderBaseUrl {
+public class Get08 extends JsonPlaceHolderBaseUrl {
     /*
     Given
            https://jsonplaceholder.typicode.com/todos/2
@@ -24,7 +25,7 @@ public class Get08 extends JSonPlaceHolderBaseUrl {
     public void get08(){
         //1. Set the base url
         spec.pathParams("first", "todos", "second",2);
-        //2. Set the expected data
+        //Set the expected data
         Map<String,Object> expectedData = new HashMap<>();
         expectedData.put("userId", 1);
         expectedData.put("id", 2);
@@ -38,5 +39,22 @@ public class Get08 extends JSonPlaceHolderBaseUrl {
         assertEquals(expectedData.get("id"), actualData.get("id"));
         assertEquals(expectedData.get("title"), actualData.get("title"));
         assertEquals(expectedData.get("completed"), actualData.get("completed"));
+    }
+    @Test
+    public void test(){
+        //1. Set the base url
+        spec.pathParams("first", "todos", "second",2);
+        //Set the expected data
+        Todo expectedTodo = new Todo(1,2, "quis ut nam facilis et officia qui",false);
+        //Send the Get request and get the response
+        Response response = given().spec(spec).when().get("/{first}/{second}");
+        //This is todo reference  // this part is returning Todo Object
+        Todo actualTodo = response.as(Todo.class);
+        assertEquals(expectedTodo.getId(), actualTodo.getId());
+        assertEquals(expectedTodo.getTitle(), actualTodo.getTitle());
+        assertEquals(expectedTodo.getUserId(), actualTodo.getUserId());
+        assertEquals(expectedTodo.isCompleted(), actualTodo.isCompleted());
+        System.out.println("Expected Todo: " +expectedTodo);
+        System.out.println("Actual todo: "+actualTodo);
     }
 }

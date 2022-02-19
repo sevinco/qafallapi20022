@@ -1,6 +1,6 @@
 package get_http_request_method;
 
-import base_urls.JSonPlaceHolderBaseUrl;
+import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class Get03 extends JSonPlaceHolderBaseUrl {
+public class Get03 extends JsonPlaceHolderBaseUrl {
     /*
         Given
             https://jsonplaceholder.typicode.com/todos/23
