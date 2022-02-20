@@ -1,5 +1,4 @@
 package pojos;
-
 public class Todo {
     /*
     Given

@@ -21,7 +21,7 @@ public class Get11 extends DummyApiBaseUrl {
     public void get11()  throws IOException{
         //1. Set the base url
         spec.pathParams("first", "api","second","v1", "third", "employees");
-        //Send the Get request and get the response
+        //3.Send the Get request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}/{third}");
         //response.prettyPrint();
         //We do deserialization using Object Mapper
