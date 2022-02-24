@@ -33,10 +33,10 @@ public class Get11 extends DummyApiBaseUrl {
         }
         System.out.println(outerData.getMessage());
         System.out.println(outerData.getStatus());
-        assertTrue(outerData.getData().size() == 24);
+        assertTrue(outerData.getData().size() == 24);//validation
     }
     @Test
-    public void get12(){
+    public void get12(){ //preferable use this
         //1. Set the base url
         spec.pathParams("first", "api","second","v1", "third", "employees");
         //Send the Get request and get the response
